@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'standalone',
   images: {
-    unoptimized: true, // ← DESACTIVA sharp temporalmente
+    unoptimized: true, // ← Esto hace que no necesites sharp
   },
   typescript: {
     ignoreBuildErrors: true,
