@@ -1,12 +1,12 @@
-import { appRouter, createTRPCContext } from '@/server';
-import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
+// TEMPORALMENTE DESHABILITADO PARA DEPLOY EN RENDER
+// TODO: Arreglar la exportación de createTRPCContext
 
-const handler = (req: Request) =>
-  fetchRequestHandler({
-    endpoint: '/api/trpc',
-    req,
-    router: appRouter,
-    createContext: createTRPCContext,
-  });
+export const dynamic = 'force-static';
 
-export { handler as GET, handler as POST };
+export async function GET() {
+  return new Response('API en construcción', { status: 200 });
+}
+
+export async function POST() {
+  return new Response('API en construcción', { status: 200 });
+}
