@@ -113,7 +113,7 @@ function ServicesTab() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map((service) => (
+        {services.map((service: any) => (
           <div key={service.id} className="bg-bg-primary border border-border-light rounded-2xl p-6 hover:border-accent-cyan/50 transition-all duration-300">
             <h3 className="text-2xl font-semibold mb-3 text-text-primary">{service.title}</h3>
             <p className="text-text-secondary mb-6">{service.description}</p>
