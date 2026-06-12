@@ -1,11 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  images: {
+    unoptimized: true, // ← DESACTIVA sharp temporalmente
+  },
   typescript: {
-    ignoreBuildErrors: true,  // ← Ignora errores de TypeScript
+    ignoreBuildErrors: true,
   },
   eslint: {
-    ignoreDuringBuilds: true, // ← Ignora errores de ESLint
+    ignoreDuringBuilds: true,
   },
 }
 
