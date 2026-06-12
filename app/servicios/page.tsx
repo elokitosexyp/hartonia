@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { trpc } from '@/lib/trpc';
 import { Cpu, Smartphone, Globe, Zap, Code, Brain } from 'lucide-react';
+import type { Service } from '@prisma/client';
 
 const serviceIcons: Record<string, React.ComponentType<any>> = {
   'Cpu': Cpu,

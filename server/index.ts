@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { publicProcedure, router } from './trpc';
+import { publicProcedure, router, createTRPCContext } from './trpc';
 
 export const appRouter = router({
   // Services
@@ -122,4 +122,5 @@ export const appRouter = router({
     }),
 });
 
+export { createTRPCContext };
 export type AppRouter = typeof appRouter;

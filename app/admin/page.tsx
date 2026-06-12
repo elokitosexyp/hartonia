@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import Button from '@/components/Button';
 import { trpc } from '@/lib/trpc';
 import { Edit, Trash2, Plus, CheckCircle2, Eye } from 'lucide-react';
+import type { Service, Project, ContactMessage } from '@prisma/client';
 
 type Tab = 'services' | 'projects' | 'messages';
 
@@ -58,11 +59,17 @@ export default function AdminPage() {
 
 function ServicesTab() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingService, setEditingService] = useState<any>(null);
+  const [editingService, setEditingService] = useState<any | null>(null);
   const [form, setForm] = useState({ title: '', description: '', icon: 'Cpu', order: 0 });
   const utils = trpc.useContext();
 
   const { data: services = [] } = trpc.getServices.useQuery();
+
+  const handleEdit = (service: any) => {
+    setEditingService(service);
+    setForm(service);
+    setIsModalOpen(true);
+  };
   const createService = trpc.createService.useMutation({
     onSuccess: () => {
       utils.getServices.invalidate();
@@ -90,12 +97,6 @@ function ServicesTab() {
     } else {
       await createService.mutateAsync(form);
     }
-  };
-
-  const handleEdit = (service: any) => {
-    setEditingService(service);
-    setForm(service);
-    setIsModalOpen(true);
   };
 
   const handleDelete = async (id: string) => {
@@ -191,11 +192,17 @@ function ServicesTab() {
 
 function ProjectsTab() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingProject, setEditingProject] = useState<any>(null);
+  const [editingProject, setEditingProject] = useState<any | null>(null);
   const [form, setForm] = useState({ title: '', description: '', imageUrl: '', category: '', order: 0 });
   const utils = trpc.useContext();
 
   const { data: projects = [] } = trpc.getProjects.useQuery();
+
+  const handleEdit = (project: any) => {
+    setEditingProject(project);
+    setForm(project);
+    setIsModalOpen(true);
+  };
   const createProject = trpc.createProject.useMutation({
     onSuccess: () => {
       utils.getProjects.invalidate();
@@ -223,12 +230,6 @@ function ProjectsTab() {
     } else {
       await createProject.mutateAsync(form);
     }
-  };
-
-  const handleEdit = (project: any) => {
-    setEditingProject(project);
-    setForm(project);
-    setIsModalOpen(true);
   };
 
   const handleDelete = async (id: string) => {

@@ -3,6 +3,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { trpc } from '@/lib/trpc';
+import type { Project } from '@prisma/client';
 
 export default function ProjectsPage() {
   const { data: projects = [] } = trpc.getProjects.useQuery();
